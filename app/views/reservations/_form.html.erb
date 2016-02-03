@@ -1,0 +1,24 @@
+<% if current_user %>
+  <h4>New Reservation</h4>
+
+  <%= form_for([@restaurant, @reservation]) do |f| %>
+    <div class="field">
+      <p>
+        <%= f.label :time %><br>
+        <%= f.time_field :time %>
+      </p>
+      <p>
+        <%= f.label :party_size %>
+        <%= f.number_field :party_size %>
+      </p>
+      <p>
+        <%= f.submit %>
+      </p>
+
+<% else %>
+
+  <p>
+    Please <%= link_to "log in", new_session_path %> to add a reservation.
+  </p>
+
+<% end %>
