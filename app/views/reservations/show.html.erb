@@ -1,0 +1,14 @@
+<h1>Your Reservation</h1>
+<p>
+  <strong>Restaurant:</strong>
+  <%= @reservation.restaurant.name %>
+</p>
+<p>
+  <strong>Location:</strong>
+  <%= @reservation.restaurant.location %>
+</p>
+<p>
+  <strong>Time and Date:</strong>
+  <%= @reservation.date_time %>
+</p>
+<%= link_to "Edit", edit_reservation_path %>

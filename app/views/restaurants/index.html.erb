@@ -1,13 +1,20 @@
 <ul>
   <% @restaurants.each do |resto| %>
   <li>
-    <h4><%= resto.name %></h4>
+    <h3><%= resto.name %></h3>
     <p>
+      <strong>Price:</strong>
       <% resto.price.times do %>
         $
       <% end %>
     </p>
-    <p><%= resto.description %></p>
+    <p>
+      <strong>Location:</strong>
+      <%= resto.location %>
+    </p>
+    <p>
+      <strong>Description:</strong>
+      <%= resto.description %></p>
   </li>
   <% end %>
 </ul>
