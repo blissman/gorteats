@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-  has_secure_password
-
   def index
   end
 
