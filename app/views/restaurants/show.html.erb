@@ -1,15 +1,21 @@
-<p>
-  <%= @restaurant.name %>
-</p>
-<p>
-  <%= @restaurant.location %>
-</p>
-<p>
-  <% price = [] %>
-  <% @restaurant.price.times do %>
-    <% price << '$' %>
-  <% end %>
-    <%= price.join("") %>
-</p>
-  <%= @restaurant.description %>
-<p>
+<div class="restaurant_info">
+  <p>
+    <%= @restaurant.name %>
+  </p>
+  <p>
+    <%= @restaurant.location %>
+  </p>
+  <p>
+    <% price = [] %>
+    <% @restaurant.price.times do %>
+      <% price << '$' %>
+    <% end %>
+      <%= price.join("") %>
+  </p>
+    <%= @restaurant.description %>
+  <p>
+</div>
+
+<div class="reservation form">
+  <%= render "reservations/form" %>
+</div>
