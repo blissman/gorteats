@@ -7,9 +7,17 @@ class ReservationsController < ApplicationController
   end
 
   def edit
+    @reservation = Reservation.find(params[:id])
   end
 
   def update
+    @reservation = Reservation.find(params[:id])
+
+    if @reservation.update_attributes(reservation_params)
+      redirect_to @reservation
+    else
+      render :edit
+    end
   end
 
   def new
@@ -19,5 +27,10 @@ class ReservationsController < ApplicationController
   end
 
   def delete
+  end
+
+  private
+  def reservation_params
+    params.require(:reservation).permit(:date_time)
   end
 end
