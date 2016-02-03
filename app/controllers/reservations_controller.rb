@@ -18,5 +18,7 @@ class ReservationsController < ApplicationController
   end
 
   def delete
+    @reservation = Reservation.find(params[:id])
+    @reservation.delete
   end
 end

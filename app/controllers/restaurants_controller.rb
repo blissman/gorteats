@@ -18,5 +18,11 @@ class RestaurantsController < ApplicationController
   end
 
   def delete
+        @restaurant = Restaurant.find(params[:id])
+        @restaurant.delete
+        redirect_to restaurants_path
+  end
+
+
   end
 end
