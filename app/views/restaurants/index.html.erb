@@ -1,0 +1,13 @@
+<ul>
+  <% @restaurants.each do |resto| %>
+  <li>
+    <h4><%= resto.name %></h4>
+    <p>
+      <% resto.price.times do %>
+        $
+      <% end %>
+    </p>
+    <p><%= resto.description %></p>
+  </li>
+  <% end %>
+</ul>
