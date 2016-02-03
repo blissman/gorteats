@@ -6,7 +6,14 @@
 </div>
 
 <div>
+  <%= f.label :party_size %>
+  <%= f.number_field :party_size %>
+</div>
+
+<div>
   <%= f.submit %>
 </div>
+
+<%= link_to "Back", @reservation %>
 
 <% end %>
