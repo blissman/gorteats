@@ -13,4 +13,4 @@ User.create({name: "Bliss", email: "b@m.com", password: "bliss"})
 
 Restaurant.create({name: "Fil's Diner", location: "Toronto", price: 5, description: "The best diner ever.", owner_id: 1})
 
-Reservation.create({datetime: Time.now, party_size: 6, restaurant_id: 1, user_id: 2})
+Reservation.create({date_time: Time.now, party_size: 6, restaurant_id: 1, user_id: 2})
