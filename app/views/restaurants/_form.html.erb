@@ -1,0 +1,25 @@
+<!-- Manage restaurants form -->
+
+<%= form_for [@user, @restaurant] do |f| %>
+  <div class="field">
+    <p>
+      <%= f.label :name %><br>
+      <%= f.text_field :name %>
+    </p>
+    <p>
+      <%= f.label :location %><br>
+      <%= f.text_field :location %>
+    </p>
+    <p>
+      <%= f.label :price %><br>
+      <%= f.number_field :price %>
+    </p>
+    <p>
+      <%= f.label :description %>
+      <%= f.text_area :description %>
+    </p>
+    <p>
+      <%= f.submit %>
+    </p>
+
+<% end %>
