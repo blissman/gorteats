@@ -3,7 +3,7 @@ class ReservationsController < ApplicationController
   before_action :load_user
 
   def index
-    @reservations = @user.reservations.all
+    @reservations = current_user.reservations.all
   end
 
   def show
@@ -17,7 +17,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.find(params[:id])
 
     if @reservation.update_attributes(reservation_params)
-      redirect_to user_reservations_path
+      redirect_to user_path(current_user)
     else
       render :edit
     end
@@ -27,6 +27,13 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    @reservation = Reservation.new(reservation_params)
+
+    if @reservation.save
+      redirect_to user_path(current_user)
+    else
+      render 'restaurant/show'
+    end
   end
 
   def delete
@@ -36,11 +43,7 @@ class ReservationsController < ApplicationController
 
   private
   def reservation_params
-    params.require(:reservation).permit(:date_time)
-  end
-
-  def load_user
-    @user = User.find(params[:user_id])
+    params.require(:reservation).permit(:date_time, :party_size)
   end
 
 end
