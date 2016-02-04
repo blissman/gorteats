@@ -3,15 +3,24 @@ class ReservationsController < ApplicationController
   before_action :load_user
 
   def index
+    @reservations = @user.reservations.all
   end
 
   def show
   end
 
   def edit
+    @reservation = Reservation.find(params[:id])
   end
 
   def update
+    @reservation = Reservation.find(params[:id])
+
+    if @reservation.update_attributes(reservation_params)
+      redirect_to @reservation
+    else
+      render :edit
+    end
   end
 
   def new
