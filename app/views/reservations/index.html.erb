@@ -21,7 +21,6 @@
         <%= reservation.date_time %>
       </p>
     </li>
-
+    <%= link_to "Edit", "/users/#{@user.id}/reservations/#{reservation.id}/edit" %>
   <% end %>
 </ul>
-<%= link_to "Edit", edit_user_reservation_path %>
