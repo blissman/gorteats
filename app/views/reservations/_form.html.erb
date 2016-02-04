@@ -1,4 +1,4 @@
-<% if current_user %>
+<!-- <% if current_user %> -->
   <h4>New Reservation</h4>
 
   <%= form_for([@restaurant, @reservation]) do |f| %>
@@ -15,10 +15,10 @@
         <%= f.submit %>
       </p>
 
-<% else %>
+<!-- <% else %> -->
 
-  <p>
+  <!-- <p>
     Please <%= link_to "log in", new_session_path %> to add a reservation.
   </p>
 
-<% end %>
+<% end %> -->

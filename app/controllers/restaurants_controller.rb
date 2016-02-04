@@ -6,9 +6,9 @@ class RestaurantsController < ApplicationController
   def show
     @restaurant = Restaurant.find(params[:id])
 
-    if current_user
-      @reservation = @restaurant.reservations.build
-    end
+    # if current_user
+    #   @reservation = @restaurant.reservations.build
+    # end
   end
 
   def edit
