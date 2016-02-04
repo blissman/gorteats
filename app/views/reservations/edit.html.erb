@@ -1,4 +1,4 @@
-<%= form_for [@user, @reservation] do |f| %>
+<%= form_for [@reservation.restaurant, @reservation] do |f| %>
 
 <div>
   <%= f.label :date_time %>
@@ -14,6 +14,6 @@
   <%= f.submit %>
 </div>
 
-<%= link_to "Back", user_reservation_path %>
+<%= link_to 'Back', user_path(current_user) %>
 
 <% end %>
