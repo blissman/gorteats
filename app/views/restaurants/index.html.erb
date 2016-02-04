@@ -1,7 +1,7 @@
 <ul>
   <% @restaurants.each do |resto| %>
   <li>
-    <h3><%= resto.name %></h3>
+    <h3><%= link_to resto.name, resto %></h3>
     <p>
       <strong>Price:</strong>
       <% resto.price.times do %>
