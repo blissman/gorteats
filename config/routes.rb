@@ -1,7 +1,15 @@
 Rails.application.routes.draw do
   root 'restaurants#index'
 
-  resources :users
+  # get "/manage/restaurants" =>  'manage/restaurants#index'
+
+  namespace :manage do
+    resources :restaurants
+  end
+
+  resources :users do
+    resources :restaurants
+  end
 
   resources :restaurants do
     resources :reservations
