@@ -1,1 +1,12 @@
-<h1>Please work</h1>
+<h1>Manage My Restaurants</h1>
+
+<% @businesses.each do |business| %>
+
+  <h2><%= business.name %></h2>
+  <ul>
+    <li><%= business.location %></li>
+    <li><%= business.price %></li>
+    <li><%= business.description %></li>
+  </ul>
+
+<% end %>
