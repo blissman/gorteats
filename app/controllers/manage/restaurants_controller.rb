@@ -6,7 +6,9 @@ class Manage::RestaurantsController < ApplicationController
     @businesses = @user.businesses
   end
 
-  def edit
-    @business = @user.business.find(:id)
+  def show
+    @user = current_user
+    @business = @user.businesses.find(params[:id])
   end
+
 end

@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
   root 'restaurants#index'
 
-  get "/manage/restaurants" =>  'manage/restaurants#index'
+  # get "/manage/restaurants" =>  'manage/restaurants#index'
 
-  # namespace :manage do
-  #   resources :restaurants
-  # end
+  namespace :manage do
+    resources :restaurants
+  end
 
   resources :users do
     resources :restaurants
