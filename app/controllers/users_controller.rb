@@ -3,6 +3,8 @@ class UsersController < ApplicationController
   end
 
   def show
+    @restaurant = Restaurant.find(params[:id])
+    @user = current_user
   end
 
   def edit
