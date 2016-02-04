@@ -1,7 +1,7 @@
 
   <h4>New Reservation</h4>
 
-  <%= form_for [@user, @reservation] do |f| %>
+  <%= form_for [@restaurant, @reservation] do |f| %>
     <div class="field">
       <p>
         <%= f.label :date_time %><br>
@@ -13,7 +13,6 @@
       </p>
       <p>
         <%= f.submit %>
-        <%= f.hidden_field :restaurant, value: @restaurant %>
       </p>
 
 <% end %>
