@@ -21,10 +21,10 @@ class RestaurantsController < ApplicationController
   def create
   end
 
-  def delete
+  def destroy
         @restaurant = Restaurant.find(params[:id])
-        @restaurant.delete
-        redirect_to restaurants_path
+        @restaurant.destroy
+        redirect_to  user_path(current_user)
   end
 
 end

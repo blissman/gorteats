@@ -39,9 +39,10 @@
     end
   end
 
-  def delete
+  def destroy
     @reservation = Reservation.find(params[:id])
-    @reservation.delete
+    @reservation.destroy
+    redirect_to  user_path(current_user)
   end
 
   private
