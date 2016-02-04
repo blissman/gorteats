@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   root 'restaurants#index'
 
-  resources :users
+  resources :users do
+    resources :restaurants
+  end
 
   resources :restaurants do
     resources :reservations
