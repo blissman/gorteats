@@ -1,6 +1,4 @@
-class ReservationsController < ApplicationController
-
-  before_action :load_user
+  class ReservationsController < ApplicationController
 
   def index
     @reservations = current_user.reservations.all
@@ -27,7 +25,12 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
+    @reservation = Reservation.new(
+      party_size: reservation_params[:party_size],
+      date_time: reservation_params[:date_time],
+      user: current_user,
+      restaurant_id: params[:restaurant_id]
+    )
 
     if @reservation.save
       redirect_to user_path(current_user)
