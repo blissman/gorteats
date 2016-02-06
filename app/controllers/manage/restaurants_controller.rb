@@ -1,12 +1,16 @@
 class Manage::RestaurantsController < ApplicationController
   before_action :ensure_logged_in
 
+  def new
+    @business = Restaurant.new
+  end
+
   def index
     @user = current_user
     @businesses = @user.businesses
   end
 
-  def show
+  def edit
     @user = current_user
     @business = @user.businesses.find(params[:id])
   end

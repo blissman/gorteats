@@ -4,8 +4,6 @@
     @reservations = current_user.reservations.all
   end
 
-  def show
-  end
 
   def edit
     @reservation = Reservation.find(params[:id])
@@ -19,9 +17,6 @@
     else
       render :edit
     end
-  end
-
-  def new
   end
 
   def create
