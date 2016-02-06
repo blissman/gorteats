@@ -1,5 +1,7 @@
 <h1>Manage My Restaurants</h1>
 
+<%= link_to "New Restaurant", new_manage_restaurant_path %>
+
 <% @businesses.each do |business| %>
 
   <h2><%= business.name %></h2>
