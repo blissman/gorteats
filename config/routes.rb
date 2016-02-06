@@ -4,15 +4,15 @@ Rails.application.routes.draw do
   # get "/manage/restaurants" =>  'manage/restaurants#index'
 
   namespace :manage do
-    resources :restaurants
+    resources :restaurants, only: [:new, :index, :edit]
   end
 
   resources :users do
-    resources :restaurants
+    resources :restaurants, only: [:create, :update, :destroy, :index, :show]
   end
 
   resources :restaurants do
-    resources :reservations
+    resources :reservations, only: [:new, :create, :update, :edit, :destroy,]
   end
 
   resources :sessions, only: [:new, :create, :destroy]

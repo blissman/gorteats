@@ -1,3 +1,5 @@
 <h3>Update <%= @business.name %></h3>
 
+<li><%= link_to "Delete Restaurant", @business, method: :delete, data: { confirm: "Are you sure you want to delete this?" } %></li>
+
 <%= render 'form' %>
