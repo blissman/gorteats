@@ -25,18 +25,27 @@
   end
 
   def create
+    @restaurant = Restaurant.find(params[:restaurant_id])
     @reservation = Reservation.new(
       party_size: reservation_params[:party_size],
       date_time: reservation_params[:date_time],
       user: current_user,
-      restaurant_id: params[:restaurant_id]
+      restaurant: @restaurant
     )
 
-    if @reservation.save
-      redirect_to user_path(current_user)
+    if (@reservation.party_size != 0) && @reservation.party_size < (@restaurant.capacity - @restauraunt.reservations.sum(:party_size) + @reservation.party_size)
+
+      if @reservation.save
+        redirect_to user_path(current_user)
+      else
+        render 'restaurant/show'
+      end
+
     else
-      render 'restaurant/show'
+      flash[:notice] = "Sorry, the restauraunt does not currently have enough space for your party of #{@reservation.party_size}. Total capacity is #{@restaurant.capacity}. Please try again later."
+      render :new
     end
+
   end
 
   def destroy
