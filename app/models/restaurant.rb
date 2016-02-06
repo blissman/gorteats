@@ -6,10 +6,12 @@ class Restaurant < ActiveRecord::Base
   def available? (reservation)
     exists = reservation.id ? true : false
 
-    if exists
-      (reservation.party_size != 0) && (reservation.party_size <= capacity - reservations.sum(:party_size) + Reservation.find(reservation.id).party_size)
-    else
-      (reservation.party_size != 0) && (reservation.party_size <= capacity - reservations.sum(:party_size))
-    end
+    current_reso_party_size = exists ? Reservation.find(reservation.id).party_size : 0
+
+    availability = reservation.party_size <= capacity - reservations.sum(:party_size) + current_reso_party_size
+
+    reservation.party_size != 0 && availability
+
   end
+
 end
