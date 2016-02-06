@@ -1,1 +1,13 @@
+<%= link_to "< Back to Manage Your Restaurants", manage_restaurants_path %>
+
 <h1>Reservations for <%= @business.name %></h1>
+
+<% @reservations.each do |reservation| %>
+
+<ul>
+  <li>Name: <%= reservation.user.name %></li>
+  <li>Party size: <%= reservation.party_size %></li>
+  <li>Time: <%= reservation.date_time %></li>
+</ul>
+
+<% end %>

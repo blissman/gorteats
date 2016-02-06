@@ -4,6 +4,7 @@ class Manage::RestaurantsController < ApplicationController
   def show
     @user = current_user
     @business = @user.businesses.find(params[:id])
+    @reservations = @business.reservations
   end
 
   def new
