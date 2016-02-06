@@ -9,9 +9,6 @@ class RestaurantsController < ApplicationController
     @reservation = Reservation.new
   end
 
-  def edit
-  end
-
   def update
     @user = current_user
     @business = @user.businesses.find(params[:id])
@@ -20,9 +17,6 @@ class RestaurantsController < ApplicationController
     else
       render :show, notice: 'Invalid input.'
     end
-  end
-
-  def new
   end
 
   def create

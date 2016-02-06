@@ -10,7 +10,7 @@ class Manage::RestaurantsController < ApplicationController
     @businesses = @user.businesses
   end
 
-  def show
+  def edit
     @user = current_user
     @business = @user.businesses.find(params[:id])
   end
