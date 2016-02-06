@@ -16,15 +16,17 @@
     # Assign attributes to reservation but don't save yet
     @reservation.assign_attributes(reservation_params)
 
-    if (@reservation.party_size != 0) && (@reservation.party_size <= @restaurant.capacity - @restaurant.reservations.sum(:party_size) + Reservation.find(params[:id]).party_size )
+    if @restaurant.available?(@reservation)
       if @reservation.save
         redirect_to user_path(current_user)
       else
         render :edit
       end
     else
-      flash[:notice] = "Sorry, the restauraunt does not currently have enough space for your party of #{@reservation.party_size}.
-                        Total capacity is #{@restaurant.capacity}. Please try again later. Remaining capacity is
+      flash[:notice] = "Sorry, the restauraunt does not currently have enough
+                        space for your party of #{@reservation.party_size}.
+                        Total capacity is #{@restaurant.capacity}. Please try
+                        again later. Remaining capacity is
                         #{(@restaurant.capacity - @restaurant.reservations.sum(:party_size) + Reservation.find(params[:id]).party_size)}"
       render :edit
     end
@@ -40,7 +42,7 @@
       restaurant: @restaurant
     )
 
-    if (@reservation.party_size != 0) && @reservation.party_size <= (@restaurant.capacity - @restaurant.reservations.sum(:party_size))
+    if @restaurant.available?(@reservation)
 
       if @reservation.save
         redirect_to user_path(current_user)
@@ -49,9 +51,12 @@
       end
 
     else
-      flash[:notice] = "Sorry, the restauraunt does not currently have enough space for your party of #{@reservation.party_size}.
-                        Total capacity is #{@restaurant.capacity}. Please try again later. Remaining capacity is
+      flash[:notice] = "Sorry, the restauraunt does not currently have enough
+                        space for your party of #{@reservation.party_size}.
+                        Total capacity is #{@restaurant.capacity}. Please try
+                        again later. Remaining capacity is
                         #{(@restaurant.capacity - @restaurant.reservations.sum(:party_size))}"
+
       redirect_to @restaurant
     end
 
