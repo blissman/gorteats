@@ -31,7 +31,7 @@ class RestaurantsController < ApplicationController
   def destroy
     @restaurant = Restaurant.find(params[:id])
     @restaurant.destroy
-    redirect_to  user_path(current_user)
+    redirect_to  manage_restaurants_path, notice: "Restaurant DESTROY"
   end
 
   private
