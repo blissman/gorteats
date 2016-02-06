@@ -26,12 +26,18 @@ class RestaurantsController < ApplicationController
   end
 
   def create
+    @user = current_user
+    if @user.businesses.create(restaurant_params)
+      redirect_to manage_restaurants_path, notice: "Added RestoNamePlaceholder to your managed restaurants!"
+    else
+      render :new, notice: 'Invalid input.'
+    end
   end
 
   def destroy
-        @restaurant = Restaurant.find(params[:id])
-        @restaurant.destroy
-        redirect_to  user_path(current_user)
+    @restaurant = Restaurant.find(params[:id])
+    @restaurant.destroy
+    redirect_to  user_path(current_user)
   end
 
   private
