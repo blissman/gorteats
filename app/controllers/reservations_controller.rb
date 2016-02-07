@@ -1,4 +1,4 @@
-  class ReservationsController < ApplicationController
+class ReservationsController < ApplicationController
 
   def index
     @reservations = current_user.reservations.all
@@ -16,6 +16,7 @@
     # Assign attributes to reservation but don't save yet
     @reservation.assign_attributes(reservation_params)
 
+    # This should be in else case not "double negative"
     if !@reservation.valid?
       flash[:notice] = "NOT VALID"
       redirect_to @restaurant
