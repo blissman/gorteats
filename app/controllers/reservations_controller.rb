@@ -16,7 +16,10 @@
     # Assign attributes to reservation but don't save yet
     @reservation.assign_attributes(reservation_params)
 
-    if @restaurant.available?(@reservation)
+    if !@reservation.valid?
+      flash[:notice] = "NOT VALID"
+      redirect_to @restaurant
+    elsif @restaurant.available?(@reservation)
       if @reservation.save
         redirect_to user_path(current_user)
       else
