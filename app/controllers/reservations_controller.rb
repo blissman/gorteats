@@ -44,7 +44,7 @@
       user: current_user,
       restaurant: @restaurant
     )
-
+    
     if !@reservation.valid?
       flash[:notice] = "NOT VALID"
       redirect_to @restaurant

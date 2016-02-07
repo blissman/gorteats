@@ -1,53 +1,55 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Gorteats</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <nav class="navbar navbar-default">
-    <div class="container-fluid">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= link_to "GORTEATS", root_path, class: "navbar-brand" %>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Gorteats</title>
+
+    <%= stylesheet_link_tag    "application" %>
+    <%= javascript_include_tag "application", 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <!-- edit for foundation -->
+    <div clas="row">
+      <div class="small-12 column">
+
+          <%= link_to "GORTEATS", root_path%>
+
+          <ul>
+            <li> <%= link_to "Manage Restaurants", manage_restaurants_path %> </li>
+            <li> <%= link_to "My Reservations", current_user %> </li>
+          </ul>
+
+              <!-- rename class for foundation -->
+          <div class="flash">
+            <% if flash[:notice] %>
+              <p id="notice"><%= flash[:notice] %></p>
+            <% end %>
+            <% if flash[:alert] %>
+              <p id="alert"><%= flash[:alert] %></p>
+            <% end %>
+          </div>
+
+              <!-- rename class for foundation -->
+          <div class="login_signup">
+            <% if current_user %>
+              Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+            <% else %>
+              <%= link_to "Log in", new_session_path, class: 'button small radius' %> or <%= link_to "Sign up", new_user_path, class: 'button small radius' %>
+            <% end %>
+          </div>
       </div>
+    </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Manage Restaurants", manage_restaurants_path %></li>
-          <li><%= link_to "My Reservations", current_user %></li>
-        </ul>
-      </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-  </nav>
-
-  <div class="container-fluid">
-    <% if flash[:notice] %>
-      <p id="notice"><%= flash[:notice] %></p>
-    <% end %>
-    <% if flash[:alert] %>
-      <p id="alert"><%= flash[:alert] %></p>
-    <% end %>
-
-    <p class="userinfo">
-      <% if current_user %>
-        Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-      <% else %>
-        <%= link_to "Log in", new_session_path %> or <%= link_to "Sign up", new_user_path %>
-      <% end %>
-    </p>
+    <div clas="row">
+      <div class="small-12 column">
 
     <%= yield %>
-  </div>
 
-</body>
+      </div>
+    </div>
+
+  </body>
 </html>

@@ -2,9 +2,14 @@
   <h4>New Reservation</h4>
 
   <%= form_for [@restaurant, @reservation] do |f| %>
-    <div class="field">
+
+  <div class="form">
+
+      <div class="row">
+        <div class="small-4">
+
       <p>
-        <%= f.label :date_time %><br>
+        <%= f.label :date_time %>
         <%= f.time_field :date_time %>
       </p>
       <p>
@@ -15,4 +20,8 @@
         <%= f.submit %>
       </p>
 
+    </div>
+  </div>
+
+</div>
 <% end %>
