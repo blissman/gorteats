@@ -14,31 +14,33 @@
     <!-- edit for foundation -->
     <div class="row">
       <div class="small-12 column">
-        <div class = top-bar-left>
-          <%= link_to "GORTEATS", root_path%>
-            <div class="flash">
-              <% if flash[:notice] %>
-                <p id="notice"><%= flash[:notice] %></p>
-              <% end %>
-              <% if flash[:alert] %>
-                <p id="alert"><%= flash[:alert] %></p>
-              <% end %>
-            </div>
-        </div>
-              <!-- rename class for foundation -->
+        <div class= top-bar>
+          <div class = top-bar-left>
+            <%= link_to "GORTEATS", root_path%>
+              <div class="flash">
+                <% if flash[:notice] %>
+                  <p id="notice"><%= flash[:notice] %></p>
+                <% end %>
+                <% if flash[:alert] %>
+                  <p id="alert"><%= flash[:alert] %></p>
+                <% end %>
+              </div>
+          </div>
+                <!-- rename class for foundation -->
 
-              <!-- rename class for foundation -->
-          <div class = top-bar-right>
-            <div class="login_signup">
-              <% if current_user %>
-                Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
-                <ul>
-                  <li> <%= link_to "Manage Restaurants", manage_restaurants_path %> </li>
-                  <li> <%= link_to "My Reservations", current_user %> </li>
-                </ul>
-              <% else %>
-                <%= link_to "Log in", new_session_path, class: 'button small radius' %> or <%= link_to "Sign up", new_user_path, class: 'button small radius' %>
-              <% end %>
+                <!-- rename class for foundation -->
+            <div class = top-bar-right>
+              <div class="login_signup">
+                <% if current_user %>
+                  Signed in as <%= current_user.email %>. <%= link_to "Log out", session_path("current"), :method => :delete %>
+                  <ul>
+                    <li> <%= link_to "Manage Restaurants", manage_restaurants_path %> </li>
+                    <li> <%= link_to "My Reservations", current_user %> </li>
+                  </ul>
+                <% else %>
+                  <%= link_to "Log in", new_session_path, class: 'button small radius' %> or <%= link_to "Sign up", new_user_path, class: 'button small radius' %>
+                <% end %>
+              </div>
             </div>
           </div>
       </div>
